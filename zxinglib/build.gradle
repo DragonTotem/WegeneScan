@@ -41,4 +41,5 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0") {
         exclude module: "rxjava"
     }
+    implementation 'com.github.User:Repo:Tag'
 }
