@@ -1,0 +1,3 @@
+include ':zxinglib'
+include ':app'
+rootProject.name = "WegeneScan"
