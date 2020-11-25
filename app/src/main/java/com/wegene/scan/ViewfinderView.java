@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.zxing.view;
+package com.wegene.scan;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -24,7 +24,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 
 import com.google.zxing.uitls.DensityUtil;
-import com.google.zxing.client.android.R;
+import com.google.zxing.view.BaseViewfinderView;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial

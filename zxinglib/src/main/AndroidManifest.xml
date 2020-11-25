@@ -10,14 +10,4 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
-        <activity
-            android:name="com.google.zxing.ScanCaptureActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-    </application>
-
 </manifest>

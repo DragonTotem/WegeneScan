@@ -20,6 +20,7 @@ package com.google.zxing.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -257,15 +258,14 @@ public abstract class BaseViewfinderView extends View {
     private void init(Context context, AttributeSet attrs) {
         //初始化自定义属性信息
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ScanViewfinderView);
-        maskColor = array.getColor(R.styleable.ScanViewfinderView_maskColor, ContextCompat.getColor(context, R.color.mask_color));
-        frameColor = array.getColor(R.styleable.ScanViewfinderView_frameColor, ContextCompat.getColor(context, R.color.white));
-        cornerColor = array.getColor(R.styleable.ScanViewfinderView_cornerColor, ContextCompat.getColor(context, R.color.white));
-        laserColor = array.getColor(R.styleable.ScanViewfinderView_laserColor, ContextCompat.getColor(context, R.color.theme_blue));
-        resultPointColor = array.getColor(R.styleable.ScanViewfinderView_resultPointColor, ContextCompat.getColor(context, R.color.white));
-
+        maskColor = array.getColor(R.styleable.ScanViewfinderView_maskColor, Color.parseColor("#8727374D"));
+        frameColor = array.getColor(R.styleable.ScanViewfinderView_frameColor, Color.WHITE);
+        cornerColor = array.getColor(R.styleable.ScanViewfinderView_cornerColor, Color.WHITE);
+        laserColor = array.getColor(R.styleable.ScanViewfinderView_laserColor, Color.parseColor("#4FB1F7"));
+        resultPointColor = array.getColor(R.styleable.ScanViewfinderView_resultPointColor, Color.WHITE);
 
         labelText = array.getString(R.styleable.ScanViewfinderView_labelText);
-        labelTextColor = array.getColor(R.styleable.ScanViewfinderView_labelTextColor, ContextCompat.getColor(context, R.color.white));
+        labelTextColor = array.getColor(R.styleable.ScanViewfinderView_labelTextColor, Color.WHITE);
         labelTextSize = array.getDimension(R.styleable.ScanViewfinderView_labelTextSize, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14f, getResources().getDisplayMetrics()));
         labelTextPadding = array.getDimension(R.styleable.ScanViewfinderView_labelTextPadding, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
         labelTextLocation = TextLocation.getFromInt(array.getInt(R.styleable.ScanViewfinderView_labelTextLocation, 0));

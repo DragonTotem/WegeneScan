@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.zxing;
+package com.wegene.scan;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -25,7 +25,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
-import com.google.zxing.client.android.R;
+import com.google.zxing.BaseCaptureActivity;
+import com.google.zxing.OnCaptureCallback;
 import com.google.zxing.uitls.DensityUtil;
 
 public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptureCallback {

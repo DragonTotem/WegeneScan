@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <com.google.zxing.view.ViewfinderView
+    <com.wegene.scan.ViewfinderView
         android:id="@+id/viewfinderView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
