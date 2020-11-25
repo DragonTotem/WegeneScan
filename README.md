@@ -1,3 +1,6 @@
+
+[![](https://jitpack.io/v/DragonTotem/WegeneScan.svg)](https://jitpack.io/#DragonTotem/WegeneScan)
+
 # WegeneScan
 
 To get a Git project into your build:
