@@ -64,6 +64,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
     public static final int REQUEST_SCAN_CODE = 100;
     public static final int REQUEST_CAMERA_PERMISSION = 101;
     public static final int REQUEST_READ_PERMISSION = 102;
+    public static final int REQUEST_IMAGE_CODE = 103;
 
     private boolean gotoAlbum = Boolean.FALSE;
 
@@ -157,7 +158,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CAMERA_PERMISSION && grantResults.length > 0
+        if (requestCode == REQUEST_READ_PERMISSION && grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             switchSelectedImage();
         } else {
@@ -169,7 +170,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         viewfinderView.setNoSuspendDrawLaser(false);
-        if (resultCode == RESULT_OK && data != null && requestCode == REQUEST_READ_PERMISSION) {
+        if (resultCode == RESULT_OK && data != null && requestCode == REQUEST_IMAGE_CODE) {
             Observable
                     .create((ObservableOnSubscribe<String>) emitter -> {
 
@@ -235,7 +236,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
      */
     protected void switchSelectedImage() {
         gotoAlbum = Boolean.TRUE;
-        gotoAlbumForImage(this, REQUEST_READ_PERMISSION);
+        gotoAlbumForImage(this, REQUEST_IMAGE_CODE);
     }
 
     /**

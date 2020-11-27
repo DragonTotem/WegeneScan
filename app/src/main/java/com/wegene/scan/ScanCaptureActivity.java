@@ -55,7 +55,7 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(ScanCaptureActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_IMAGE);
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_READ_PERMISSION);
             } else {
                 switchSelectedImage();
             }
