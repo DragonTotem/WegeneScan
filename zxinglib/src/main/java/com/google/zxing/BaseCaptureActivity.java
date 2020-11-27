@@ -82,6 +82,9 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
         mCaptureHelper = new CaptureHelper(this, surfaceView, viewfinderView, lightView);
         mCaptureHelper.setOnCaptureCallback(this);
         mCaptureHelper.onCreate();
+        mCaptureHelper.playBeep(true)
+                .vibrate(true)
+                .supportVerticalCode(true);
     }
 
     /**
