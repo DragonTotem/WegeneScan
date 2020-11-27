@@ -61,7 +61,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
 
     protected CaptureHelper mCaptureHelper;
 
-    public static final int REQUEST_CODE_IMAGE = 1;
+    public static final int REQUEST_CODE_IMAGE = 102;
 
     private boolean gotoAlbum = Boolean.FALSE;
 

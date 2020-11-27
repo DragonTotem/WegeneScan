@@ -16,8 +16,10 @@
 package com.wegene.scan;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ import androidx.core.app.ActivityCompat;
 import com.google.zxing.BaseCaptureActivity;
 import com.google.zxing.OnCaptureCallback;
 import com.google.zxing.uitls.DensityUtil;
+import com.google.zxing.uitls.LogUtil;
 
 public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptureCallback {
 
@@ -69,6 +72,11 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
     @Override
     public void handleCode(String code) {
         Toast.makeText(this, "handleCodeSuccess: code:" + code, Toast.LENGTH_LONG).show();
+        Log.w("MainActivity", "handleCode code: " + code);
+        Intent i = new Intent();
+        i.putExtra("code", code);
+        this.setResult(RESULT_OK, i);
+        finish();
     }
 
     @Override

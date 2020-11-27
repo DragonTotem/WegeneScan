@@ -4,17 +4,20 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var clickTv: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<TextView>(R.id.tv_click).setOnClickListener {
+        clickTv = findViewById<TextView>(R.id.tv_click)
+        clickTv.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(
                     this@MainActivity, Manifest.permission.CAMERA
                 ) != PackageManager.PERMISSION_GRANTED
@@ -39,6 +42,16 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(i, 1000)
         } else {
             Toast.makeText(this, "权限申请失败", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                Log.w("MainActivity", "onActivityResult code: ${data?.extras?.getString("code")}")
+                clickTv.text = data?.extras?.getString("code")
+            }
         }
     }
 }
