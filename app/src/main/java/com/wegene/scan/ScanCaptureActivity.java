@@ -24,13 +24,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.google.zxing.BaseCaptureActivity;
 import com.google.zxing.OnCaptureCallback;
 import com.google.zxing.uitls.DensityUtil;
-import com.google.zxing.uitls.LogUtil;
 
 public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptureCallback {
 
@@ -57,7 +55,7 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(ScanCaptureActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1000);
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_IMAGE);
             } else {
                 switchSelectedImage();
             }
@@ -77,15 +75,5 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
         i.putExtra("code", code);
         this.setResult(RESULT_OK, i);
         finish();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1000 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            switchSelectedImage();
-        } else {
-            Toast.makeText(this, "权限申请失败", Toast.LENGTH_LONG).show();
-        }
     }
 }

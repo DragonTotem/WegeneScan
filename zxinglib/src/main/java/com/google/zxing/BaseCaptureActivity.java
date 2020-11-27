@@ -61,7 +61,9 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
 
     protected CaptureHelper mCaptureHelper;
 
-    public static final int REQUEST_CODE_IMAGE = 102;
+    public static final int REQUEST_SCAN_CODE = 100;
+    public static final int REQUEST_CAMERA_PERMISSION = 101;
+    public static final int REQUEST_READ_PERMISSION = 102;
 
     private boolean gotoAlbum = Boolean.FALSE;
 
@@ -153,10 +155,21 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CAMERA_PERMISSION && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switchSelectedImage();
+        } else {
+            Toast.makeText(this, "权限申请失败", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         viewfinderView.setNoSuspendDrawLaser(false);
-        if (resultCode == RESULT_OK && data != null && requestCode == REQUEST_CODE_IMAGE) {
+        if (resultCode == RESULT_OK && data != null && requestCode == REQUEST_READ_PERMISSION) {
             Observable
                     .create((ObservableOnSubscribe<String>) emitter -> {
 
@@ -222,7 +235,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
      */
     protected void switchSelectedImage() {
         gotoAlbum = Boolean.TRUE;
-        gotoAlbumForImage(this, REQUEST_CODE_IMAGE);
+        gotoAlbumForImage(this, REQUEST_READ_PERMISSION);
     }
 
     /**
