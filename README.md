@@ -19,7 +19,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.DragonTotem:WegeneScan:1.3'
+	        implementation 'com.github.DragonTotem:WegeneScan:1.6'
 	}
   
  可以继承BaseCaptureActivity，只需要实现三个方法就可以使用了，必须在initView中给出viewfinderView、surfaceView
