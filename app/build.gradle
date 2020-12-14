@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 //    implementation project(':zxinglib')
-    implementation 'com.github.DragonTotem:WegeneScan:1.6'
+    implementation 'com.github.DragonTotem:WegeneScan:1.7'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
 

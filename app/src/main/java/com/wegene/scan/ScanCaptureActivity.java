@@ -44,7 +44,7 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
                 ViewGroup.LayoutParams layoutParams = scanTipTv.getLayoutParams();
                 if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
                     ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layoutParams;
-                    params.topMargin = rect.bottom + DensityUtil.dip2px(ScanCaptureActivity.this, 20);
+                    params.topMargin = rect.bottom + DensityUtil.dip2px(ScanCaptureActivity.this, 30);
                     scanTipTv.setLayoutParams(params);
                 }
             }

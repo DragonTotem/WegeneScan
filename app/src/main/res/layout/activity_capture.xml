@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:paddingTop="20dp"
         app:maskColor="#8727374D" />
 
     <ImageView
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="扫一扫"
+        android:text="扫描采集管条形码"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -52,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="将二维码/条形码放入框内，即可自动扫描"
+        android:text="将唾液采集管上的条形码放入框内，即可自动扫描"
         android:textColor="@color/white" />
 
     <ImageView

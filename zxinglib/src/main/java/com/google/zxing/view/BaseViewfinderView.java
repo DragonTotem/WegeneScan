@@ -36,10 +36,10 @@ import android.util.TypedValue;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import com.google.zxing.client.android.R;
 import com.google.zxing.parse.ResultPoint;
+import com.google.zxing.uitls.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -200,6 +200,11 @@ public abstract class BaseViewfinderView extends View {
      */
     private boolean noSuspendDrawLaser = true;
 
+    /**
+     * 针对特殊扫描框
+     */
+    private boolean barCodeScan = false;
+
     private List<ResultPoint> possibleResultPoints;
     private List<ResultPoint> lastPossibleResultPoints;
 
@@ -295,8 +300,8 @@ public abstract class BaseViewfinderView extends View {
 
         possibleResultPoints = new ArrayList<>(5);
         lastPossibleResultPoints = null;
-        initFrame();
         initView();
+        initFrame();
     }
 
     public abstract void initView();
@@ -363,10 +368,20 @@ public abstract class BaseViewfinderView extends View {
             }
         }
 
-        //扫码框默认居中，支持利用内距偏移扫码框
-        int leftOffset = (screenWidth - frameWidth) / 2 + getPaddingLeft() - getPaddingRight();
-        int topOffset = framePaddingTop == 0 ? (screenHeight - frameHeight) / 3 + getPaddingTop() - getPaddingBottom() : framePaddingTop;
-        frame = new Rect(leftOffset, topOffset, leftOffset + frameWidth, topOffset + frameHeight);
+        if (barCodeScan) {
+            int maxWidth = (int) (screenWidth * 0.56);
+            int maxHeight = (int) (screenHeight * 0.4);
+
+            int leftOffset = (screenWidth - maxWidth) / 2;
+            int topOffset = (screenHeight - maxHeight) / 2 - getPaddingTop();
+
+            frame = new Rect(leftOffset, topOffset, leftOffset + maxWidth, topOffset + maxHeight);
+        } else {
+            //扫码框默认居中，支持利用内距偏移扫码框
+            int leftOffset = (screenWidth - frameWidth) / 2 + getPaddingLeft() - getPaddingRight();
+            int topOffset = framePaddingTop == 0 ? (screenHeight - frameHeight) / 3 + getPaddingTop() - getPaddingBottom() : framePaddingTop;
+            frame = new Rect(leftOffset, topOffset, leftOffset + frameWidth, topOffset + frameHeight);
+        }
     }
 
     /**
@@ -612,5 +627,9 @@ public abstract class BaseViewfinderView extends View {
 
     public void postInvalidateDelayed() {
         postInvalidateDelayed(scannerAnimationDelay);
+    }
+
+    public void setBarCodeScan(boolean barCodeScan) {
+        this.barCodeScan = barCodeScan;
     }
 }

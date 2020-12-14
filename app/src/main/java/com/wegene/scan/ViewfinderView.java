@@ -45,6 +45,7 @@ public final class ViewfinderView extends BaseViewfinderView {
 
     @Override
     public void initView() {
+        setBarCodeScan(true);
         upBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_collector_up);
         downBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_collector_down);
     }
