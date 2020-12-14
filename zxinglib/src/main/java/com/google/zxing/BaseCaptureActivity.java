@@ -107,6 +107,11 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
     public abstract void handleCode(String code);
 
     /**
+     * 识别相册失败处理
+     */
+    public abstract  void handleCodeError();
+
+    /**
      * Get {@link CaptureHelper}
      *
      * @return {@link #mCaptureHelper}
@@ -208,8 +213,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
 
                         @Override
                         public void onError(@NonNull Throwable e) {
-                            Toast.makeText(BaseCaptureActivity.this, "未能识别，请手动输入", Toast.LENGTH_LONG).show();
-                            viewfinderView.postDelayed(() -> scanAgain(), 100);
+                            handleCodeError();
                         }
 
                         @Override

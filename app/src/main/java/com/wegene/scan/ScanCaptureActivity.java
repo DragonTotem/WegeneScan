@@ -76,4 +76,10 @@ public class ScanCaptureActivity extends BaseCaptureActivity implements OnCaptur
         this.setResult(RESULT_OK, i);
         finish();
     }
+
+    @Override
+    public void handleCodeError() {
+        Toast.makeText(this, "未能识别，请手动输入", Toast.LENGTH_LONG).show();
+        viewfinderView.postDelayed(() -> scanAgain(), 100);
+    }
 }
