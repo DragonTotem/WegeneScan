@@ -179,7 +179,6 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
 
                         Uri uri = data.getData();
                         String path = getPath(uri);
-
                         Bitmap bitmap = CodeUtils.compressBitmap(BaseCaptureActivity.this, path);
                         String result = CodeUtils.parseCode(bitmap);
                         if (!TextUtils.isEmpty(result)) {
@@ -209,7 +208,7 @@ public abstract class BaseCaptureActivity extends AppCompatActivity implements O
 
                         @Override
                         public void onError(@NonNull Throwable e) {
-                            Toast.makeText(BaseCaptureActivity.this, "扫码失败", Toast.LENGTH_LONG);
+                            Toast.makeText(BaseCaptureActivity.this, "未能识别，请手动输入", Toast.LENGTH_LONG).show();
                             viewfinderView.postDelayed(() -> scanAgain(), 100);
                         }
 
